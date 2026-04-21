@@ -1,0 +1,22 @@
+# Data files — never commit
+data/*.csv
+data/*.db
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+dist/
+build/
+
+# Venv artifacts that may land in scripts/ if venv is created at repo root
+scripts/Activate.ps1
+scripts/activate
+scripts/activate.bat
+scripts/deactivate.bat
+scripts/*.exe
+
+# IDE
+.vscode/
+.idea/
