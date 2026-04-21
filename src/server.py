@@ -8,9 +8,10 @@ Transport:
 """
 
 import os
-import sys
 
 from mcp.server.fastmcp import FastMCP
+from starlette.requests import Request
+from starlette.responses import JSONResponse
 
 import src.db as db
 
@@ -207,8 +208,13 @@ def delete_customer(id: int) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Health endpoint (HTTP/SSE transport only)
+# Health endpoint (HTTP transport only)
 # ---------------------------------------------------------------------------
+
+@mcp.custom_route("/health", methods=["GET"])
+async def health(request: Request) -> JSONResponse:
+    return JSONResponse({"status": "ok"})
+
 
 def main() -> None:
     transport = os.environ.get("MCP_TRANSPORT", "stdio")
