@@ -10,6 +10,7 @@ Transport:
 import os
 
 from mcp.server.fastmcp import FastMCP
+from mcp.server.fastmcp.server import TransportSecuritySettings
 from starlette.requests import Request
 from starlette.responses import JSONResponse
 
@@ -21,6 +22,7 @@ mcp = FastMCP(
         "Tools for searching, reading, and managing synthetic customer records. "
         "All data is fictional and for demonstration purposes only."
     ),
+    transport_security=TransportSecuritySettings(enable_dns_rebinding_protection=False),
 )
 
 
